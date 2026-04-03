@@ -1,20 +1,27 @@
-app = "llm-context-packer"
-primary_region = "iad"
+# fly.toml app configuration file generated for llm-context-packer on 2026-04-03T10:49:29+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'llm-context-packer'
+primary_region = 'iad'
 
 [build]
-  dockerfile = "Dockerfile"
+  dockerfile = 'Dockerfile'
+
+[env]
+  ENV = 'production'
+  LOG_LEVEL = 'warning'
 
 [http_service]
   internal_port = 8000
   force_https = true
-  auto_stop_machines = "stop"
+  auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
 
 [[vm]]
-  size = "shared-cpu-1x"
-  memory = 512
-
-[env]
-  ENV = "production"
-  LOG_LEVEL = "warning"
+  size = 'shared-cpu-1x'
+  memory = '512mb'
+  cpus = 1
+  memory_mb = 512
